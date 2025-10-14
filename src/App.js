@@ -4,6 +4,9 @@ import "./App.css";
 function App() {
   const [input, setInput] = useState("");
   const [todoList, setTodoList] = useState([]);
+  const [pending, setPending] = useState([]);
+  const [all, setAll] = useState([]);
+  const [complete, setComplete] = useState([]);
 
   const addTodoItem = () => {
     if (input.trim() === "") return setInput("");
