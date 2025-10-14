@@ -46,43 +46,43 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-[#3b2667] to-[#bc78ec] flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+      <div className="min-h-screen bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center py-10">
+        <div className="bg-white rounded-xl shadow-xl p-8 w-full max-w-4xl space-y-6">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
             To-Do List{" "}
             <span role="img" aria-label="notepad">
               📝
             </span>
           </h2>
 
-          <div className="flex mb-4 overflow-hidden rounded-full bg-gray-100">
+          <div className="flex mb-6 overflow-hidden rounded-full bg-gray-200 shadow-lg">
             <input
-              className="flex-1 px-4 py-2 bg-transparent focus:outline-none"
+              className="flex-1 px-6 py-3 bg-transparent focus:outline-none rounded-l-full text-gray-800 placeholder-gray-500"
               type="text"
               placeholder="Add your task"
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
             <button
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 font-semibold transition duration-200"
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 font-semibold transition duration-200 rounded-r-full"
               onClick={addTodoItem}
             >
               Add
             </button>
           </div>
 
-          <ul className="space-y-2">
+          <ul className="space-y-4">
             {todoList.map((t) => (
               <li key={t.id}>
-                <div className="flex items-center bg-gray-100 rounded-lg p-2">
+                <div className="flex items-center bg-gray-100 rounded-lg p-4 transition-all hover:bg-gray-200">
                   <input
                     type="checkbox"
                     checked={t.completed}
                     onChange={() => toggleCheckbox(t.id)}
-                    className="mr-3 w-5 h-5"
+                    className="mr-4 w-6 h-6 text-indigo-500 focus:ring-indigo-400"
                   />
                   <span
-                    className={`flex-1 text-gray-800 ${
+                    className={`flex-1 text-lg font-medium text-gray-800 transition-all ${
                       t.completed ? "line-through text-gray-500" : ""
                     }`}
                   >
@@ -90,7 +90,7 @@ function App() {
                   </span>
                   <button
                     onClick={() => handleDeleteTodo(t.id)}
-                    className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 font-semibold transition duration-200 rounded-lg"
+                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition duration-200"
                   >
                     Delete
                   </button>
@@ -99,26 +99,43 @@ function App() {
             ))}
           </ul>
 
-          <h6>Pending</h6>
-          <ul>
-            {pending.map((p) => (
-              <li key={p.id}>{p.item}</li>
-            ))}
-          </ul>
+          {/* Task categories displayed side by side */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="space-y-4">
+              <h6 className="text-lg font-semibold text-gray-700">Pending</h6>
+              <ul className="space-y-2">
+                {pending.map((p) => (
+                  <li key={p.id} className="text-gray-800">
+                    {p.item}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <h6>All Todo</h6>
-          <ul>
-            {all.map((a) => (
-              <li key={a.id}>{a.item}</li>
-            ))}
-          </ul>
+            <div className="space-y-4">
+              <h6 className="text-lg font-semibold text-gray-700">All Tasks</h6>
+              <ul className="space-y-2">
+                {all.map((a) => (
+                  <li key={a.id} className="text-gray-800">
+                    {a.item}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <h6>completed Task</h6>
-          <ul>
-            {complete.map((c) => (
-              <li key={c.id}>{c.item}</li>
-            ))}
-          </ul>
+            <div className="space-y-4">
+              <h6 className="text-lg font-semibold text-gray-700">
+                Completed Tasks
+              </h6>
+              <ul className="space-y-2">
+                {complete.map((c) => (
+                  <li key={c.id} className="text-gray-500 line-through">
+                    {c.item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </>
