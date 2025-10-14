@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   const addTodoItem = () => {
     if (input.trim() === "") return setInput("");
     const newItem = {
-      id: todoList.length + 1,
+      id: Date.now(),
       item: input.trim(),
       completed: false,
     };
@@ -37,6 +37,12 @@ function App() {
   const handleDeleteTodo = (id) => {
     setTodoList(todoList.filter((item) => item.id !== id));
   };
+
+  useEffect(() => {
+    setPending(todoList.filter((p) => !p.completed));
+    setComplete(todoList.filter((c) => c.completed));
+    setAll(todoList);
+  }, [todoList]);
 
   return (
     <>
@@ -90,6 +96,27 @@ function App() {
                   </button>
                 </div>
               </li>
+            ))}
+          </ul>
+
+          <h6>Pending</h6>
+          <ul>
+            {pending.map((p) => (
+              <li key={p.id}>{p.item}</li>
+            ))}
+          </ul>
+
+          <h6>All Todo</h6>
+          <ul>
+            {all.map((a) => (
+              <li key={a.id}>{a.item}</li>
+            ))}
+          </ul>
+
+          <h6>completed Task</h6>
+          <ul>
+            {complete.map((c) => (
+              <li key={c.id}>{c.item}</li>
             ))}
           </ul>
         </div>
