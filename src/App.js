@@ -101,7 +101,7 @@ function App() {
 
           {/* Task categories displayed side by side */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="space-y-4">
+            <div className="space-y-4 border border-gray-300 rounded-lg p-4">
               <h6 className="text-lg font-semibold text-gray-700">Pending</h6>
               <ul className="space-y-2">
                 {pending.map((p) => (
@@ -112,7 +112,7 @@ function App() {
               </ul>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 border border-gray-300 rounded-lg p-4">
               <h6 className="text-lg font-semibold text-gray-700">All Tasks</h6>
               <ul className="space-y-2">
                 {all.map((a) => (
@@ -123,7 +123,7 @@ function App() {
               </ul>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 border border-gray-300 rounded-lg p-4">
               <h6 className="text-lg font-semibold text-gray-700">
                 Completed Tasks
               </h6>
