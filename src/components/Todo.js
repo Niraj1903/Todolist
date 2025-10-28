@@ -15,6 +15,12 @@ const Todo = () => {
     setInput("");
   };
 
+  const handleTodoOnEnter = (e) => {
+    if (e.key === "Enter") {
+      handleAddTodo();
+    }
+  };
+
   const handleDelete = (id) => {
     setTodo(todo.filter((d) => d.id !== id));
   };
@@ -47,6 +53,7 @@ const Todo = () => {
               type="text"
               placeholder="Enter Todo"
               value={input}
+              onKeyDown={handleTodoOnEnter}
               onChange={(e) => setInput(e.target.value)}
               className="w-full p-2 pl-4 pr-12 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
