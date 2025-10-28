@@ -62,7 +62,7 @@ const Todo = () => {
               value={input}
               onKeyDown={handleTodoOnEnter}
               onChange={(e) => setInput(e.target.value)}
-              className="w-full p-3 pl-6 pr-14 border-2 border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 ease-in-out"
+              className="w-full p-3 pl-6 pr-14 border-2 border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 ease-in-out"
             />
             <button
               onClick={handleAddTodo}
@@ -143,7 +143,7 @@ const Todo = () => {
               </h6>
               <ul className="space-y-2">
                 {all.map((a) => (
-                  <li key={a.id} className="text-gray-800">
+                  <li key={a.id} className="text-gray-800 list-item">
                     {a.text}
                   </li>
                 ))}
