@@ -5,6 +5,7 @@ const Todo = () => {
   const [todo, setTodo] = useState([]);
 
   const handleAddTodo = () => {
+    if (!input.trim()) return;
     const item = {
       id: Date.now(),
       completed: false,
@@ -41,19 +42,21 @@ const Todo = () => {
     <>
       <div className="max-w-md mx-auto mt-8 p-4 bg-white rounded-lg shadow-md">
         <div className="flex mb-4">
-          <input
-            type="text"
-            placeholder="Enter Todo"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="flex-1 p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-          <button
-            onClick={handleAddTodo}
-            className="p-2 bg-indigo-500 text-white rounded-r-md hover:bg-indigo-600 transition"
-          >
-            Add
-          </button>
+          <div className="relative flex-1">
+            <input
+              type="text"
+              placeholder="Enter Todo"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className="w-full p-2 pl-4 pr-12 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            />
+            <button
+              onClick={handleAddTodo}
+              className="absolute right-0 top-0 bottom-0 px-4 py-2 bg-indigo-500 text-white rounded-r-md hover:bg-indigo-600 transition"
+            >
+              Add
+            </button>
+          </div>
         </div>
 
         <div className="space-y-4">
